@@ -317,6 +317,7 @@ func (client *Client) worker() {
 		client.mu.RUnlock()
 
 		outgoingPacket.ch <- client.Transport.Send(url, authHeader, outgoingPacket.packet)
+        close(outgoingPacket.ch)
 	}
 }
 
